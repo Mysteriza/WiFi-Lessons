@@ -128,3 +128,8 @@ However, if no WiFi password is found, there are typically two main possibilitie
 2.  **Wordlist Does Not Contain the Password:** This is also common, especially if the WiFi password is complex or unique. The success of cracking highly relies on the quality and comprehensiveness of your wordlist.
 
 Remember, this process does not guarantee a 100% success rate in obtaining your desired WiFi password, as it's highly dependent on your wordlist.
+
+### Contact
+If you have any questions you'd like to ask privately, please DM me on:
+- Discord: [Mysteriza](https://discord.com/users/Mysteriza#8017). I am also a member of the Bruce Firmware server on Discord.
+- Email: [mysteriza@proton.me](mailto:mysteriza@proton.me)
