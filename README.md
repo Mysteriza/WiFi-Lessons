@@ -22,8 +22,8 @@ Welcome to WiFi Lessons! This guide will walk you through the process of capturi
 
 Before we dive in, please ensure you have the following prerequisites covered. This guide will **not** cover their installation, and you are expected to set them up yourself:
 
-1.  **A PC with WSL Kali Linux installed on Windows, or Kali Linux installed in a Virtual Machine** (e.g., VMWare or VirtualBox). This tutorial will specifically use WSL Kali Linux.
-2.  **A device with Bruce Firmware installed** (e.g., Lilygo, M5Stack, CYD, ESP32).
+1.  **A PC with WSL Kali Linux installed on Windows, or Kali Linux installed in a Virtual Machine** (e.g., VMWare or VirtualBox). This tutorial will specifically use WSL Kali Linux. [How to install WSL Kali Linux on Windows](https://www.youtube.com/results?search_query=how+to+install+wsl+kali+linux+on+windows+11).
+2.  **A device with Bruce Firmware installed** (e.g., Lilygo, M5Stack, CYD, ESP32). [How to flash Bruce Firmware](https://bruce.computer/flasher).
 
 If you meet these requirements, you're ready to proceed! Take your time to set up WSL Kali Linux if you haven't already; it's a crucial step. This tutorial reflects my personal workflow, but once you grasp the core concepts, feel free to adapt it to your preferred, faster, or easier methods.
 
@@ -39,8 +39,10 @@ In the context of WiFi security, a "handshake" is a sequence of messages exchang
 1.  **Power On Your Brucegotchi:** Turn on your device with Bruce Firmware installed.
 2.  **Navigate to Brucegotchi Mode:** On the Bruce Firmware menu, go to the "WiFi" menu, scroll until you find the "Brucegotchi" option, and select it.
 3.  **Automatic Operation:** Once you've entered Brucegotchi mode, your device will automatically begin scanning for networks, performing deauthentication attacks (to force clients to re-authenticate and generate handshakes), and capturing WiFi handshakes. You don't need to do anything further; it works autonomously.
-4.  **Monitor Handshake Count:** Look at the top of your device's screen for the "HS: " indicator. This shows the current number of handshakes captured. A higher number means more handshakes obtained. Ensure your device is within the target WiFi's range.
-5.  **Collect Sufficient Handshakes:** When you've gathered enough handshakes (more than one is ideal), you're ready to transfer these `.pcap` files to your PC for cracking.
+4.  **Monitor Handshake Count:** Look at the top of your device's screen for the "HS" indicator. This shows the current number of handshakes captured. A higher number means more handshakes obtained. Ensure your device is within the target WiFi's range.
+![20250706_113840](https://github.com/user-attachments/assets/c16b4c08-7300-4f29-ba0b-b342063bb86e)
+
+6.  **Collect Sufficient Handshakes:** When you've gathered enough handshakes (more than one is ideal), you're ready to transfer these `.pcap` files to your PC for cracking.
 
 ## 3. Transferring Handshake Files to Your PC
 
@@ -113,6 +115,8 @@ This section details the cracking process using WSL Kali Linux and `handshakeCra
     * **Enter Handshake Paths (Manual Mode):** If you selected Manual mode, you will be prompted to enter handshake file paths one by one. Use `TAB` for auto-completion. Type `done` or `q` when you have finished adding files.
 
 The program will then process the handshakes in the queue, displaying its progress and any results.
+![Screenshot 2025-07-06 113001](https://github.com/user-attachments/assets/775d518d-2ba3-481f-80c2-05232dd73523)
+
 
 ## 5. Understanding Cracking Results & Troubleshooting
 
