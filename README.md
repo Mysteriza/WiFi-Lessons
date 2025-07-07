@@ -4,6 +4,27 @@ Welcome to WiFi Lessons! This guide will walk you through the process of capturi
 
 **Important Disclaimer:** This tutorial is for educational and personal network security testing purposes only. **Using these methods on networks you do not own, or without explicit written permission from the network owner, is illegal and unethical. Always act responsibly and within legal boundaries.**
 
+### What is Brucegotchi?
+
+Brucegotchi is a **feature or mode within the Bruce Firmware**. When you run Bruce Firmware and activate the "Brucegotchi" mode, it essentially transforms your hardware into a specialized tool for Wi-Fi network interaction, mimicking the popular Pwnagotchi project.
+
+**How Brucegotchi Works:**
+Think of Brucegotchi as an "intelligent Wi-Fi companion" for your ESP32 device. When activated, it:
+* **Actively Scans:** Your device starts constantly scanning for Wi-Fi networks in the surrounding area.
+* **Listens for Handshakes:** It specifically listens for "handshakes" – the crucial authentication signals exchanged when a device connects to a WPA/WPA2/WPA3 Wi-Fi network.
+* **Deauthenticates (Optional but Common):** To encourage the capture of handshakes, Brucegotchi can also perform "deauthentication attacks." This means it sends special signals to connected devices, temporarily knocking them offline. When these devices try to reconnect, they perform a new handshake, which Brucegotchi then attempts to capture. This is like gently "nudging" devices to re-authenticate so Brucegotchi can "eavesdrop" on the connection process.
+* **Collects Data:** Any captured handshakes are saved as `.pcap` files onto your device's storage (like an SD card).
+* **Expresses "Moods":** Just like a virtual pet, Brucegotchi displays various "moods" or ASCII faces on your device's screen (e.g., happy, bored, intense). These moods reflect its operational status and how many handshakes it's successfully captured.
+* **PwnGrid Interaction:** Brucegotchi can also communicate with other Brucegotchi or Pwnagotchi devices nearby through a "PwnGrid," allowing them to "discover" and potentially share information with each other.
+
+**Why Brucegotchi is Useful (and its Benefits):**
+The primary benefit of Brucegotchi is its ability to **passively and actively collect Wi-Fi handshakes**. This is incredibly useful for:
+* **Auditing Your Own Network Security:** By attempting to crack handshakes from your own Wi-Fi network, you can test the strength of your password. If it's easily cracked with common wordlists, you know your password needs to be stronger.
+* **Learning About Wi-Fi Security:** It provides a hands-on way to understand how Wi-Fi authentication works and the vulnerabilities that can be exploited.
+* **Portability:** Since it runs on small, low-power ESP32 devices, you can carry your Brucegotchi anywhere to observe Wi-Fi activity.
+
+In essence, Brucegotchi transforms a simple ESP32 development board into a powerful, automated tool for Wi-Fi handshake collection, making it a valuable asset for anyone interested in network security.
+
 ## Table of Contents
 
 * [1. Preliminary Requirements](#1-preliminary-requirements)
@@ -42,7 +63,7 @@ In the context of WiFi security, a "handshake" is a sequence of messages exchang
 4.  **Monitor Handshake Count:** Look at the top of your device's screen for the "HS" indicator. This shows the current number of handshakes captured. A higher number means more handshakes obtained. Ensure your device is within the target WiFi's range.
 ![20250706_113840](https://github.com/user-attachments/assets/c16b4c08-7300-4f29-ba0b-b342063bb86e)
 
-6.  **Collect Sufficient Handshakes:** When you've gathered enough handshakes (more than one is ideal), you're ready to transfer these `.pcap` files to your PC for cracking.
+5.  **Collect Sufficient Handshakes:** When you've gathered enough handshakes (more than one is ideal), you're ready to transfer these `.pcap` files to your PC for cracking.
 
 ## 3. Transferring Handshake Files to Your PC
 
@@ -64,13 +85,13 @@ This section details the cracking process using WSL Kali Linux and `handshakeCra
 
 1.  **Open WSL Kali Linux:** Launch your WSL Kali Linux terminal. You'll be greeted with a command-line interface.
 2.  **Update and Install Dependencies:** In the terminal, execute these commands one by one to update your system and install necessary tools:
-    ```
+    ```bash
     sudo apt update
     ```
-    ```
+    ```bash
     sudo apt install aircrack-ng -y
     ```
-    ```
+    ```bash
     sudo apt install python3 python3-venv -y
     ```
 
@@ -78,17 +99,17 @@ This section details the cracking process using WSL Kali Linux and `handshakeCra
 
 1.  **Clone the Repository:** From your Kali Linux terminal, clone the `handshakeCracker` repository:
     ```bash
-    git clone https://github.com/Mysteriza/handshakeCracker
+    git clone [https://github.com/Mysteriza/handshakeCracker](https://github.com/Mysteriza/handshakeCracker)
     ```
 2.  **Navigate to Tool Directory:**
     ```bash
     cd handshakeCracker
     ```
 3.  **Create and Activate Virtual Environment:** To isolate the project's Python dependencies, create and activate a virtual environment:
-    ```
+    ```bash
     python3 -m venv venv
     ```
-    ```
+    ```bash
     source venv/bin/activate
     ```
     You will see `(venv)` appear at the beginning of your terminal prompt, indicating the virtual environment is active.
@@ -116,7 +137,6 @@ This section details the cracking process using WSL Kali Linux and `handshakeCra
 
 The program will then process the handshakes in the queue, displaying its progress and any results.
 ![Screenshot 2025-07-06 113001](https://github.com/user-attachments/assets/775d518d-2ba3-481f-80c2-05232dd73523)
-
 
 ## 5. Understanding Cracking Results & Troubleshooting
 
